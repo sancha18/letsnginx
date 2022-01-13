@@ -8,12 +8,12 @@ services:
       - 443:443
     restart: always
     volumes:
-      - ./nginx/conf/:/etc/nginx/conf.d
-      - ./certbot/www:/var/www/certbot
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
-      - ./public_html:/public_html
+      - ./nginx/conf/:/etc/nginx/conf.d #nginx config folder
+      - ./certbot/www:/var/www/certbot #01 letsdata www folder:
+      - ./certbot/conf/:/etc/nginx/ssl/:ro #02 letscert keys folder:
+      - ./public_html:/public_html #nginx www data folder
   certbot:
     image: certbot/certbot:latest
     volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
+      - ./certbot/www/:/var/www/certbot/:rw #01 letsdata www folder: this folder required for let's encrypt container, save document with id, to pass certificate creation process, shared with nginx
+      - ./certbot/conf/:/etc/letsencrypt/:rw #02 letscert keys folder: this folder required to save certs, shared with nginx
