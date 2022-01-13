@@ -11,4 +11,4 @@ docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/cert
 - dir for domain should appears in certbot\conf\live\domainname\*.*
 
 Detailed instruction:
-https://mindsers.blog/post/https-using-nginx-certbot-docker/# letsnginx
+https://mindsers.blog/post/https-using-nginx-certbot-docker/#
